@@ -268,6 +268,8 @@ namespace reshade
 		unsigned int _effects_key_data[4] = {};
 #endif
 
+		unsigned int _toggle_fe_key_data[4] = {};
+
 		std::chrono::high_resolution_clock::duration _last_frame_duration;
 		std::chrono::high_resolution_clock::time_point _start_time, _last_present_time;
 		uint64_t _frame_count = 0;

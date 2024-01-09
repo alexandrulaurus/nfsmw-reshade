@@ -653,6 +653,12 @@ void reshade::runtime::on_present()
 			_effects_enabled = !_effects_enabled;
 #endif
 
+		if (_input->is_key_pressed(_toggle_fe_key_data, _force_shortcut_modifiers))
+		{
+			bool *drawHUDAddr = (bool *)0x008F374C;
+			*(drawHUDAddr) = !(*(drawHUDAddr));
+		}
+
 		if (_input->is_key_pressed(_screenshot_key_data, _force_shortcut_modifiers))
 			_should_save_screenshot = true; // Remember that we want to save a screenshot next frame
 

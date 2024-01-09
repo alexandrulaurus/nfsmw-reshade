@@ -198,6 +198,7 @@ void reshade::runtime::load_config_gui(const ini_file &config)
 
 	config.get("INPUT", "KeyOverlay", _overlay_key_data);
 	config.get("INPUT", "InputProcessing", _input_processing_mode);
+	config.get("NFSMW", "ToggleFrontend", _toggle_fe_key_data);
 
 	config.get("OVERLAY", "ClockFormat", _clock_format);
 	config.get("OVERLAY", "FPSPosition", _fps_pos);
@@ -291,6 +292,7 @@ void reshade::runtime::save_config_gui(ini_file &config) const
 {
 	config.set("INPUT", "KeyOverlay", _overlay_key_data);
 	config.set("INPUT", "InputProcessing", _input_processing_mode);
+	config.set("NFSMW", "ToggleFrontend", _toggle_fe_key_data);
 
 	config.set("OVERLAY", "ClockFormat", _clock_format);
 	config.set("OVERLAY", "FPSPosition", _fps_pos);
@@ -1610,6 +1612,7 @@ void reshade::runtime::draw_gui_settings()
 		if (_input != nullptr)
 		{
 			modified |= imgui::key_input_box("Overlay key", _overlay_key_data, *_input);
+			modified |= imgui::key_input_box("NFSMW HUD toggle key", _toggle_fe_key_data, *_input);
 
 #if RESHADE_FX
 			modified |= imgui::key_input_box("Effect toggle key", _effects_key_data, *_input);
