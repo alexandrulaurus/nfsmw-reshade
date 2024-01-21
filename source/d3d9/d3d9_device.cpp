@@ -1567,13 +1567,6 @@ HRESULT STDMETHODCALLTYPE Direct3DDevice9::SetSamplerState(DWORD Sampler, D3DSAM
 			return D3D_OK;
 		}
 	}
-	else if ((Type == D3DSAMP_MINFILTER || Type == D3DSAMP_MAGFILTER) && Value == D3DTEXF_NONE)
-	{
-		if (SUCCEEDED(_orig->SetSamplerState(Sampler, Type, D3DTEXF_ANISOTROPIC)))
-		{
-			return D3D_OK;
-		}
-	}
 
 	return _orig->SetSamplerState(Sampler, Type, Value);
 }
