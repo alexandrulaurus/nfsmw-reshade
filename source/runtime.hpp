@@ -284,6 +284,7 @@ namespace reshade
 		bool _ignore_shortcuts = false;
 		bool _force_shortcut_modifiers = true;
 		unsigned int _effects_key_data[4];
+		unsigned int _toggle_fe_key_data[4] = {};
 		std::shared_ptr<class input> _input;
 		std::chrono::high_resolution_clock::duration _last_frame_duration;
 		std::chrono::high_resolution_clock::time_point _start_time;

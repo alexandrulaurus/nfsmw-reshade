@@ -87,6 +87,7 @@ void reshade::runtime::init_gui()
 	_load_config_callables.push_back([this, &imgui_io, &imgui_style](const ini_file &config) {
 		config.get("INPUT", "KeyOverlay", _overlay_key_data);
 		config.get("INPUT", "InputProcessing", _input_processing_mode);
+		config.get("NFSMW", "ToggleFrontend", _toggle_fe_key_data);
 
 		config.get("OVERLAY", "ClockFormat", _clock_format);
 		config.get("OVERLAY", "FPSPosition", _fps_pos);
@@ -130,6 +131,7 @@ void reshade::runtime::init_gui()
 	_save_config_callables.push_back([this, &imgui_io, &imgui_style](ini_file &config) {
 		config.set("INPUT", "KeyOverlay", _overlay_key_data);
 		config.set("INPUT", "InputProcessing", _input_processing_mode);
+		config.set("NFSMW", "ToggleFrontend", _toggle_fe_key_data);
 
 		config.set("OVERLAY", "ClockFormat", _clock_format);
 		config.set("OVERLAY", "FPSPosition", _fps_pos);
@@ -1223,6 +1225,7 @@ void reshade::runtime::draw_gui_settings()
 	if (ImGui::CollapsingHeader("General", ImGuiTreeNodeFlags_DefaultOpen))
 	{
 		modified |= widgets::key_input_box("Overlay key", _overlay_key_data, *_input);
+		modified |= widgets::key_input_box("NFSMW HUD toggle key", _toggle_fe_key_data, *_input);
 
 		modified |= widgets::key_input_box("Effect toggle key", _effects_key_data, *_input);
 		modified |= widgets::key_input_box("Effect reload key", _reload_key_data, *_input);
